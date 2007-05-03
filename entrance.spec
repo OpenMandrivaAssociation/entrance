@@ -1,8 +1,6 @@
 %define	name	entrance
 %define	version	0.9.0.007
-%define release 0.%{cvsrel}.4
-
-%define cvsrel 20060323
+%define release 1
 
 Summary: 	Enlightenment login manager
 Name: 		%{name}
@@ -11,15 +9,13 @@ Release: 	%mkrel %{release}
 License: 	BSD
 Group: 		Graphical desktop/Enlightenment
 URL: 		http://get-e.org/
-Source: 	%{name}-%{cvsrel}.tar.bz2
+Source: 	%{name}-%{version}.tar.bz2
 Source1:	entrance_config_update.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	evas-devel esmart-devel edb-devel
 BuildRequires:	ecore-devel edje-devel edje edb embryo
 BuildRequires:	pam-devel
 Requires:	ecore
-# drop the following BuildRequires when fixed evas-devel and ecore-devel will be there
-BuildRequires:	ecore evas
 
 %description
 Entrance is the next generation of Elogin, a login/display manager for
@@ -30,10 +26,9 @@ dull and boring interfaces of XDM and its descendants.
 This package is part of the Enlightenment DR17 desktop shell.
 
 %prep
-%setup -q -n %name
+%setup -q
 
 %build
-./autogen.sh
 %configure2_5x
 #this causes interactive build otherwise, anyway we don't want 
 #autodetect.sh, currently tries a free vt (not sure if we need it)
