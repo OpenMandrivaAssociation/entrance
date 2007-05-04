@@ -58,11 +58,11 @@ rm -f %buildroot/%{_sysconfdir}/init.d/%name
 cat << EOF > %buildroot/%{_sysconfdir}/pam.d/%name
 #%PAM-1.0
 auth       required     pam_env.so
-auth       required	pam_stack.so service=system-auth
+auth       include	system-auth
 auth       required	pam_nologin.so
-account    required	pam_stack.so service=system-auth
-password   required	pam_stack.so service=system-auth
-session    required	pam_stack.so service=system-auth
+account    include	system-auth 
+password   include	system-auth
+session    include	system-auth
 session    optional     pam_console.so
 EOF
 
