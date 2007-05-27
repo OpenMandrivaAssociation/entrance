@@ -2,6 +2,11 @@
 %define	version	0.9.0.009
 %define release %mkrel 1
 
+%define major   0
+%define libname %mklibname %{name} %major
+%define libnamedev %mklibname %{name} %major -d
+
+
 Summary: 	Enlightenment login manager
 Name: 		%{name}
 Version: 	%{version}
@@ -26,6 +31,25 @@ aesthetically attractive -- a refreshing relief from the traditional
 dull and boring interfaces of XDM and its descendants.
 
 This package is part of the Enlightenment DR17 desktop shell.
+
+%package -n %libname
+Summary: Libraries for the %{name} package
+Group: System/Libraries
+Requires: %{name}
+
+%description -n %libname
+Libraries for %{name}
+
+%package -n %libnamedev
+Summary: Headers and development libraries from %{name}
+Group: Development/Other
+Requires: %libname = %{version}
+Provides: lib%{name}-devel = %{version}-%{release}
+Provides: %name-devel = %{version}-%{release}
+
+%description -n %libnamedev
+%{name} development headers and libraries
+
 
 %prep
 %setup -q
@@ -71,6 +95,9 @@ EOF
 %post
 %make_session
 
+%post -n %libname -p /sbin/ldconfig
+%postun -n %libname -p /sbin/ldconfig
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -84,4 +111,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/*
 %{_datadir}/%name
 
+%files -n %libname
+%defattr(-,root,root)
+%{_libdir}/entrance/entrance_login
+%{_libdir}/libentrance_edit.so*
 
+%files -n %libnamedev
+%defattr(-,root,root)
+%{_includedir}/Entrance_Edit.h
+%{_libdir}/libentrance_edit.*a
