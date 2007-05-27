@@ -1,21 +1,23 @@
 %define	name	entrance
-%define	version	0.9.0.007
-%define release 1
+%define	version	0.9.0.009
+%define release %mkrel 1
 
 Summary: 	Enlightenment login manager
 Name: 		%{name}
 Version: 	%{version}
-Release: 	%mkrel %{release}
+Release: 	%{release}
 License: 	BSD
 Group: 		Graphical desktop/Enlightenment
 URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
 Source1:	entrance_config_update.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-BuildRequires:	evas-devel esmart-devel edb-devel
-BuildRequires:	ecore-devel edje-devel edje edb embryo
+BuildRequires:	evas-devel >= 0.9.9.038, esmart-devel >= 0.9.0.008, edb-devel >= 1.0.5.007
+BuildRequires:	ecore-devel >= 0.9.9.038, edje-devel >= 0.5.0.038
+Buildrequires:  edje >= 0.5.0.038, edb >= 1.0.5.007, embryo >= 0.9.1.038
 BuildRequires:	pam-devel
-Requires:	ecore
+Requires:	ecore >= 0.9.9.038
+
 
 %description
 Entrance is the next generation of Elogin, a login/display manager for
