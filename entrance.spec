@@ -1,8 +1,8 @@
-%define	name	entrance
-%define	version	0.9.0.009
+%define	name entrance
+%define	version 0.9.0.009
 %define release %mkrel 1
 
-%define major   0
+%define major 0
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} %major -d
 
