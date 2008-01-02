@@ -16,6 +16,7 @@ Group: 		Graphical desktop/Enlightenment
 URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.gz
 Source1:	entrance_config_update.bz2
+BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	evas-devel >= 0.9.9.041, esmart-devel >= 0.9.0.008, edb-devel >= 1.0.5.008
 BuildRequires:	ecore-devel >= 0.9.9.041, edje-devel >= 0.5.0.038
 Buildrequires:  edje >= 0.5.0.038, edb >= 1.0.5.008, embryo >= 0.9.1.041
