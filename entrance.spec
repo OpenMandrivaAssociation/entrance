@@ -1,10 +1,10 @@
 %define	name entrance
-%define	version 0.9.0.013
-%define release %mkrel 1
+%define	version 0.9.9.042
+%define release %mkrel 0.cvs20080202.1
 
 %define major 0
 %define libname %mklibname %{name} %major
-%define libnamedev %mklibname %{name} %major -d
+%define libnamedev %mklibname %{name} -d
 
 
 Summary: 	Enlightenment login manager
@@ -13,18 +13,18 @@ Version: 	%{version}
 Release: 	%{release}
 License: 	BSD
 Group: 		Graphical desktop/Enlightenment
-URL: 		http://get-e.org/
-Source: 	%{name}-%{version}.tar.gz
+URL: 		http://www.enlightenment.org/
+Source: 	%{name}-20080202.tar.bz2
 Source1:	entrance_config_update.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-BuildRequires:	evas-devel >= 0.9.9.041, esmart-devel >= 0.9.0.008, edb-devel >= 1.0.5.008
-BuildRequires:	ecore-devel >= 0.9.9.041, edje-devel >= 0.5.0.038
-Buildrequires:  edje >= 0.5.0.038, edb >= 1.0.5.008, embryo >= 0.9.1.041
-BuildRequires:	ecore
+BuildRequires:	evas-devel
+BuildRequires:	esmart-devel
+BuildRequires:	ecore-devel
+BuildRequires:	edje-devel, edje
+Buildrequires:  edb, embryo, ecore
 BuildRequires:	efreet-devel
 BuildRequires:	pam-devel
-Requires:	ecore >= 0.9.9.041
-
+Requires:	ecore
 
 %description
 Entrance is the next generation of Elogin, a login/display manager for
@@ -37,7 +37,6 @@ This package is part of the Enlightenment DR17 desktop shell.
 %package -n %libname
 Summary: Libraries for the %{name} package
 Group: System/Libraries
-Requires: %{name}
 
 %description -n %libname
 Libraries for %{name}
@@ -52,11 +51,11 @@ Provides: %name-devel = %{version}-%{release}
 %description -n %libnamedev
 %{name} development headers and libraries
 
-
 %prep
-%setup -q
+%setup -q -n %name
 
 %build
+./autogen.sh
 %configure2_5x
 #this causes interactive build otherwise, anyway we don't want 
 #autodetect.sh, currently tries a free vt (not sure if we need it)
@@ -67,7 +66,6 @@ perl -pi -e "s|sh data/config/autodetect.sh|#sh data/config/autodetect.sh|" Make
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall
-
 bzcat %SOURCE1 > %buildroot/%_sbindir/entrance_config_update
 chmod 755 %buildroot/%_sbindir/entrance_config_update
 
