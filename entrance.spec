@@ -1,11 +1,10 @@
 %define	name entrance
 %define	version 0.9.9.042
-%define release %mkrel 0.cvs20080202.1
+%define release %mkrel 0.cvs20080202.2
 
 %define major 0
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} -d
-
 
 Summary: 	Enlightenment login manager
 Name: 		%{name}
@@ -56,7 +55,7 @@ Provides: %name-devel = %{version}-%{release}
 
 %build
 ./autogen.sh
-%configure2_5x
+%configure2_5x --with-xbin=%_bindir
 #this causes interactive build otherwise, anyway we don't want 
 #autodetect.sh, currently tries a free vt (not sure if we need it)
 #and copies some pam config (ou rpm already does it)
