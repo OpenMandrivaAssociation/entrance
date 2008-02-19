@@ -1,6 +1,6 @@
 %define	name entrance
 %define	version 0.9.9.042
-%define release %mkrel 0.cvs20080202.2
+%define release %mkrel 0.cvs20080202.3
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -16,14 +16,14 @@ URL: 		http://www.enlightenment.org/
 Source: 	%{name}-20080202.tar.bz2
 Source1:	entrance_config_update.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-BuildRequires:	evas-devel
-BuildRequires:	esmart-devel
-BuildRequires:	ecore-devel
-BuildRequires:	edje-devel, edje
-Buildrequires:  edb, embryo, ecore
-BuildRequires:	efreet-devel
+BuildRequires:	evas-devel >= 0.9.9.042
+BuildRequires:	esmart-devel >= 0.9.0.042
+BuildRequires:	ecore-devel >= 0.9.9.042
+BuildRequires:	edje-devel >= 0.5.0.042, edje >= 0.5.0.042
+Buildrequires:  edb >= , embryo >= 0.9.1.042, ecore >= 0.9.9.042
+BuildRequires:	efreet-devel >= 0.0.3.042
 BuildRequires:	pam-devel
-Requires:	ecore
+Requires:	ecore >= 0.9.9.042
 
 %description
 Entrance is the next generation of Elogin, a login/display manager for
@@ -113,9 +113,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %libname
 %defattr(-,root,root)
 %{_libdir}/entrance/entrance_login
-%{_libdir}/libentrance_edit.so*
+%{_libdir}/libentrance_edit.so.*
 
 %files -n %libnamedev
 %defattr(-,root,root)
 %{_includedir}/Entrance_Edit.h
 %{_libdir}/libentrance_edit.*a
+%{_libdir}/libentrance_edit.so
