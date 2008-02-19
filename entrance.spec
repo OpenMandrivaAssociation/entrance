@@ -1,6 +1,7 @@
 %define	name entrance
 %define	version 0.9.9.042
-%define release %mkrel 0.cvs20080202.3
+%define cvs 20080202
+%define release %mkrel 0.%{cvs}.3
 
 %define major 0
 %define libname %mklibname %{name} %major
