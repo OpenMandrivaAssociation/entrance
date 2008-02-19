@@ -21,7 +21,7 @@ BuildRequires:	evas-devel >= 0.9.9.042
 BuildRequires:	esmart-devel >= 0.9.0.042
 BuildRequires:	ecore-devel >= 0.9.9.042
 BuildRequires:	edje-devel >= 0.5.0.042, edje >= 0.5.0.042
-Buildrequires:  edb >= , embryo >= 0.9.1.042, ecore >= 0.9.9.042
+Buildrequires:  edb >= 1.0.5.042, embryo >= 0.9.1.042, ecore >= 0.9.9.042
 BuildRequires:	efreet-devel >= 0.0.3.042
 BuildRequires:	pam-devel
 Requires:	ecore >= 0.9.9.042
