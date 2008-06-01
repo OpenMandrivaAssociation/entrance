@@ -55,7 +55,7 @@ Provides: %name-devel = %{version}-%{release}
 %setup -q -n %name
 
 %build
-./autogen.sh
+NOCONFIGURE=1 ./autogen.sh
 %configure2_5x --with-xbin=%_bindir
 #this causes interactive build otherwise, anyway we don't want 
 #autodetect.sh, currently tries a free vt (not sure if we need it)
@@ -65,7 +65,7 @@ perl -pi -e "s|sh data/config/autodetect.sh|#sh data/config/autodetect.sh|" Make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
+%makeinstall_std
 bzcat %SOURCE1 > %buildroot/%_sbindir/entrance_config_update
 chmod 755 %buildroot/%_sbindir/entrance_config_update
 
