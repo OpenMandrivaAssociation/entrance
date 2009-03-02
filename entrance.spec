@@ -1,7 +1,7 @@
 %define	name entrance
 %define	version 0.9.9.042
-%define cvs 20080202
-%define release %mkrel 4.%{cvs}.3
+%define svn 20090227
+%define release %mkrel 1.%{svn}.1
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -17,14 +17,14 @@ URL: 		http://www.enlightenment.org/
 Source: 	%{name}-20080202.tar.bz2
 Source1:	entrance_config_update.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-BuildRequires:	evas-devel >= 0.9.9.042
-BuildRequires:	esmart-devel >= 0.9.0.042
-BuildRequires:	ecore-devel >= 0.9.9.042
-BuildRequires:	edje-devel >= 0.5.0.042, edje >= 0.5.0.042
-Buildrequires:  edb >= 1.0.5.042, embryo >= 0.9.1.042, ecore >= 0.9.9.042
-BuildRequires:	efreet-devel >= 0.0.3.042
+BuildRequires:	evas-devel >= 0.9.9.050
+BuildRequires:	esmart-devel >= 0.9.0.050
+BuildRequires:	ecore-devel >= 0.9.9.050
+BuildRequires:	edje-devel >= 0.9.9.050, edje >= 0.9.9.050
+Buildrequires:  embryo >= 0.9.9.050, ecore >= 0.9.9.050
+BuildRequires:	efreet-devel >= 0.5.050
 BuildRequires:	pam-devel
-Requires:	ecore >= 0.9.9.042
+Requires:	ecore >= 0.9.9.050
 
 %description
 Entrance is the next generation of Elogin, a login/display manager for
