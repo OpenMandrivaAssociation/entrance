@@ -14,7 +14,7 @@ Release: 	%{release}
 License: 	BSD
 Group: 		Graphical desktop/Enlightenment
 URL: 		http://www.enlightenment.org/
-Source: 	%{name}-20080202.tar.bz2
+Source: 	%{name}-%{version}.tar.bz2
 Source1:	entrance_config_update.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	evas-devel >= 0.9.9.050
