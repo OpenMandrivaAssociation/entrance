@@ -52,7 +52,7 @@ Provides: %name-devel = %{version}-%{release}
 %{name} development headers and libraries
 
 %prep
-%setup -q -n %name
+%setup -q -n %name-%version
 
 %build
 NOCONFIGURE=1 ./autogen.sh
