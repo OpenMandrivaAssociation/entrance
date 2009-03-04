@@ -1,7 +1,7 @@
 %define	name entrance
 %define	version 0.9.9.042
 %define svn 20090227
-%define release %mkrel 5.%{svn}.1
+%define release %mkrel 5.%{svn}.2
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -60,6 +60,12 @@ NOCONFIGURE=1 ./autogen.sh
 #this causes interactive build otherwise, anyway we don't want 
 #autodetect.sh, currently tries a free vt (not sure if we need it)
 #and copies some pam config (ou rpm already does it)
+
+# fix libtool issue on release < 2009.1
+%if %mdkversion < 200910
+perl -pi -e "s/^ECHO.*/ECHO='echo'\necho='echo'\n/" libtool
+%endif
+
 perl -pi -e "s|sh data/config/autodetect.sh|#sh data/config/autodetect.sh|" Makefile
 %make
 
