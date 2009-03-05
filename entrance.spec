@@ -1,7 +1,7 @@
 %define	name entrance
 %define	version 0.9.9.042
 %define svn 20090227
-%define release %mkrel 5.%{svn}.2
+%define release %mkrel 5.%{svn}.3
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -76,8 +76,8 @@ bzcat %SOURCE1 > %buildroot/%_sbindir/entrance_config_update
 chmod 755 %buildroot/%_sbindir/entrance_config_update
 
 # make dm config file
-mkdir -p %buildroot/%_sysconfdir/X11/dm.d
-cat << EOF > %buildroot/%_sysconfdir/X11/dm.d/25entrance.conf
+mkdir -p %buildroot/%_datadir//X11/dm.d
+cat << EOF > %buildroot/%_datadir/X11/dm.d/25entrance.conf
 NAME=E17
 DESCRIPTION=ENTRANCE (E17 Display Manager)
 EXEC=/usr/sbin/entranced
@@ -115,7 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc AUTHORS COPYING README
 %config(noreplace) %{_sysconfdir}/pam.d/%name
-%config(noreplace) %{_sysconfdir}/X11/dm.d/*entrance.conf
+%config(noreplace) %{_datadir}/X11/dm.d/*entrance.conf
 %config(noreplace) %{_sysconfdir}/*.cfg
 %{_bindir}/*
 %{_sbindir}/*
