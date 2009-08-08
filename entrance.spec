@@ -1,7 +1,7 @@
 %define	name entrance
 %define	version 0.9.9.042
 %define svn 20090227
-%define release %mkrel 5.%{svn}.4
+%define release %mkrel 5.%{svn}.5
 
 %define major 0
 %define libname %mklibname %{name} %major
